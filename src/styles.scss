@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+$main :  rgba(25, 15, 41);
+
+body{
+background-color: $main;
+}
