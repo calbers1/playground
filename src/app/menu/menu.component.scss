@@ -36,7 +36,8 @@
 .message{
     font-size: 10rem;
     color: lighten(yellow, 20%);
-    transition: 1s;
+    opacity: 100%;
+    clip-path: inset(0 0 0 0);
 }
 
 #messageBearer{
