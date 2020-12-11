@@ -3,11 +3,12 @@
 $bar : lighten($main, 20%);
 
 .bar{
-    background-color: $bar;
-    display: flex;
-    justify-content: center;
-    color: lighten(yellow, 30%);
-    box-shadow: -3px 3px 7px $box-shadow;
+    text-align: center;
+    color: lighten(yellow, 20%);
+    border: solid 1px transparent;
+    backdrop-filter: blur(0.5rem);
+    background-clip: padding-box;
+    box-shadow: -5px 5px 7px rgba(black, 0.5);
 }
 
 .bar h1{
