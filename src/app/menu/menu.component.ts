@@ -7,56 +7,61 @@ import { gsap } from 'gsap';
 })
 export class MenuComponent implements OnInit {
 
+  tl = gsap.timeline({defaults: {ease: "power3.inOut", duration: .5}})
+  .from('#thing', {opacity: 0, duration:  0.5});
   constructor() { }
 
   messages = ["", "This", "is", "harder", "than", "it", "seems"];
   textCounter = 0;
   msg = this.messages[this.textCounter]
-  text = document.getElementById('text');
-  tl = gsap.timeline({defaults: {ease: "power2.inOut", duration: 0.5}});
 
   changeText(){
-
+    
+    setTimeout(()=>{
     this.textCounter++;
     if (this.textCounter > 6){
       this.textCounter = 0;
     }
+    this.tl.fromTo('#text', {opacity: 0}, {opacity:100, duration:0.5});
       this.msg = this.messages[this.textCounter];
-      this.tl.from('#text', {opacity: 0, duration:  1});
       switch(Math.floor(Math.random() * Math.floor(8))){
         case 0 : {
-          this.tl.from('#text', {y: '50%', x: '50%'}, '-=.65');
+          this.tl.from('#text', {y: '50%', x: '50%', rotate: 360, scale:0});
           break;
         }
         case 1 : {
-          this.tl.from('#text', {y: '-50%', x: '-50%'}, '-=.65');
+          this.tl.from('#text', {y: '-50%', x: '-50%', rotate: 360, scale:0});
           break;
         }
         case 2 : {
-          this.tl.from('#text', {x: '50%', y: '-50%'}, '-=.65');
+          this.tl.from('#text', {x: '50%', y: '-50%', rotate: 360, scale:0});
           break;
         }
         case 3 : {
-          this.tl.from('#text', {x: '-50%', y: '50%'}, '-=.65');
+          this.tl.from('#text', {x: '-50%', y: '50%', rotate: 360, scale:0});
           break;
         }
         case 4 : {
-          this.tl.from('#text', {y: '50%'}, '-=.65');
+          this.tl.from('#text', {y: '50%', rotate: 360, scale:0});
           break;
         }
         case 5 : {
-          this.tl.from('#text', {y: '-50%'}, '-=.65');
+          this.tl.from('#text', {y: '-50%', rotate: 360, scale:0});
           break;
         }
         case 6 : {
-          this.tl.from('#text', {x: '50%'}, '-=.65');
+          this.tl.from('#text', {x: '50%', rotate: 360, scale:0});
           break;
         }
         case 7 : {
-          this.tl.from('#text', {x: '-50%'}, '-=.65');
+          this.tl.from('#text', {x: '-50%', rotate: 360, scale:0});
           break;
         }
       }
+    }, 10);
+    setTimeout(() => {
+    this.tl.fromTo('#text', {opacity: 100}, {opacity:0, duration:2}, "-=1.5");
+    }, 100);
   }
 
   ngOnInit(): void {
