@@ -23,20 +23,36 @@ export class MenuComponent implements OnInit {
     }
       this.msg = this.messages[this.textCounter];
       this.tl.from('#text', {opacity: 0, duration:  1});
-      switch(Math.floor(Math.random() * Math.floor(4))){
+      switch(Math.floor(Math.random() * Math.floor(8))){
         case 0 : {
-          this.tl.from('#text', {y: '50%'}, '-=.65');
+          this.tl.from('#text', {y: '50%', x: '50%'}, '-=.65');
           break;
         }
         case 1 : {
-          this.tl.from('#text', {y: '-50%'}, '-=.65');
+          this.tl.from('#text', {y: '-50%', x: '-50%'}, '-=.65');
           break;
         }
         case 2 : {
-          this.tl.from('#text', {x: '50%'}, '-=.65');
+          this.tl.from('#text', {x: '50%', y: '-50%'}, '-=.65');
           break;
         }
         case 3 : {
+          this.tl.from('#text', {x: '-50%', y: '50%'}, '-=.65');
+          break;
+        }
+        case 4 : {
+          this.tl.from('#text', {y: '50%'}, '-=.65');
+          break;
+        }
+        case 5 : {
+          this.tl.from('#text', {y: '-50%'}, '-=.65');
+          break;
+        }
+        case 6 : {
+          this.tl.from('#text', {x: '50%'}, '-=.65');
+          break;
+        }
+        case 7 : {
           this.tl.from('#text', {x: '-50%'}, '-=.65');
           break;
         }
