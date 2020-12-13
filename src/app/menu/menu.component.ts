@@ -1,19 +1,29 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { gsap } from 'gsap';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss']
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent implements OnInit, AfterViewInit {
 
   tl = gsap.timeline({defaults: {ease: "power3.inOut", duration: .5}})
-  .from('#thing', {opacity: 0, duration:  0.5});
-  constructor() { }
-
+  tl2 = gsap.timeline({defaults: {ease: "power3.inOut", duration: 3}})
+  tl3 = gsap.timeline({defaults: {ease: "power3.inOut", duration: 1}})
   messages = ["", "This", "is", "harder", "than", "it", "seems"];
   textCounter = 0;
   msg = this.messages[this.textCounter]
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void{
+    this.tl2.set('#thing', {opacity: 0, transition: 0});
+    this.tl2.fromTo('#thing',{opacity: 0}, {opacity: 100, duration:  1});
+    this.tl2.set('#thing', {transition: 0.3}, "-=.9");
+  }
 
   changeText(){
     
@@ -22,7 +32,8 @@ export class MenuComponent implements OnInit {
     if (this.textCounter > 6){
       this.textCounter = 0;
     }
-    this.tl.fromTo('#text', {opacity: 0}, {opacity:100, duration:0.5});
+    this.tl3.play()
+    .fromTo('#text', {opacity: 0}, {opacity:100, duration:1});
       this.msg = this.messages[this.textCounter];
       switch(Math.floor(Math.random() * Math.floor(8))){
         case 0 : {
@@ -60,11 +71,10 @@ export class MenuComponent implements OnInit {
       }
     }, 10);
     setTimeout(() => {
-    this.tl.fromTo('#text', {opacity: 100}, {opacity:0, duration:2}, "-=1.5");
-    }, 100);
-  }
-
-  ngOnInit(): void {
+      if(!this.tl3.reversed()){
+    this.tl3.reverse();
+      }
+    }, 500);
   }
 
 }

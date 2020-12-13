@@ -1,7 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-$main :  rgba(25, 15, 41);
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+$main :  #2f2fa2;
+//$dark : #242582;
+$dark : darken($main, 20%);
+$second : #553d67;
+$second-light : #99738e;
+$contrast : #f64c72;
 $btn-primary : lighten($main, 20%);
 $box-shadow : lighten($main, 15%);
+$text : rgb(228, 215, 217);
 
 @keyframes circle{
     0% {left: 0%; top: 0%;}
@@ -12,9 +20,9 @@ $box-shadow : lighten($main, 15%);
 }
 
 body{
-background-color: $main;
-background-image: url("assets/images/bg.jpg");
-font-family: Arial, sans-serif;
+    background-image: linear-gradient(to bottom right, $main, $dark);
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
 }
 
 .medSpace{
